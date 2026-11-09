@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h2>Form Input</h2>
+    <form action="input.php" onsubmit="return validateForm()" method="post">
+        <label for="nama_objek">Nama Objek:</label><br>
+        <input type="text" id="nama_objek" name="nama_objek" value=""><br>
+        <label for="jenis">Jenis:</label><br>
+        <input type="text" id="jenis" name="jenis" value=""><br>
+        <label for="kec">Kecamatan:</label><br>
+        <input type="text" id="kec" name="kecamatan" value=""><br>
+        <label for="long">Longitude:</label><br>
+        <input type="text" id="long" name="longitude" value=""><br>
+        <label for="lat">Latitude:</label><br>
+        <input type="text" id="lat" name="latitude" value=""><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <p id="informasi"></p>
+    <script>
+        function validateForm() {
+
+            let longitude = document.getElementById("long").value;
+            let latitude = document.getElementById("lat").value;
+            let text = "";
+            if (isNaN(longitude) || isNaN(latitude) || longitude === "" || latitude === "") {
+                text = "Data longitude dan latitude harus berupa angka";
+                // stop the form submission
+                event.preventDefault();
+            }
+            document.getElementById("informasi").innerHTML = text;
+        }
+    </script>
+</body>
+
+</html>
